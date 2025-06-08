@@ -36,13 +36,13 @@ def is_valid_password(password):
     number_of_special = 0
     for character in password:
         if character.isupper():
-            number_of_upper = number_of_upper + 1
+            number_of_upper += 1
         elif character.islower():
-            number_of_lower = number_of_lower + 1
+            number_of_lower +=  1
         elif character.isdigit():
-            number_of_digit = number_of_digit + 1
+            number_of_digit += 1
         elif character in  SPECIAL_CHARACTERS:
-            number_of_special = number_of_special + 1
+            number_of_special += 1
 
 
     if number_of_lower == 0 or number_of_upper == 0 or number_of_digit == 0:
