@@ -1,14 +1,12 @@
 """
 wimbledon.py
 Estimated time: 35 minutes
-Actual time:   minutes
+Actual time:  40 minutes
 """
 def main():
     filename = "wimbledon.csv"
     data = read_data(filename)
-    print(data)
     champion_to_wins = count_champions(data)
-    print(champion_to_wins)
     countries = get_champion_countries(data)
     display_results(champion_to_wins, countries)
 
@@ -33,9 +31,14 @@ def get_champion_countries(data):
     for row in data:
         country = row[1]
         countries.add(country)
-        return sorted(countries)
+    return sorted(countries)
 
-def display_results():
-    return
+def display_results(champion_to_wins,countries):
+    print("Wimbledon Champions:")
+    for name, count in champion_to_wins.items():
+        print(f"{name:20} {count}")
+    print(f"\nThese {len(countries)} countries have won Wimbledon:")
+    print(", ".join(countries))
+
 
 main()
