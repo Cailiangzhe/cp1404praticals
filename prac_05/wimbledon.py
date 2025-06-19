@@ -28,8 +28,12 @@ def count_champions(data):
         champion_to_wins[champion] = champion_to_wins.get(champion, 0) + 1
     return champion_to_wins
 
-def get_champion_countries():
-    return
+def get_champion_countries(data):
+    countries = set()
+    for row in data:
+        country = row[1]
+        countries.add(country)
+        return sorted(countries)
 
 def display_results():
     return
