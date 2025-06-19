@@ -12,6 +12,7 @@ def main():
         print(f"{name} ({email})")
 
 def extract_name(email):
+    """Extract name part from email"""
     name_part = email.split("@")[0].title()
     return name_part
 
