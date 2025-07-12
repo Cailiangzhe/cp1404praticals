@@ -1,7 +1,7 @@
 """
 Project Management Program
 Estimated time: 2.5 hours
-Actual time:  hours
+Actual time: 4 hours
 """
 
 from project import Project
@@ -11,6 +11,7 @@ FILENAME = "projects.txt"
 
 
 def main():
+    """Main function to run the project management program with a text-based menu interface"""
     print("Welcome to Pythonic Project Management")
     projects = load_projects(FILENAME)
     print(f"Loaded {len(projects)} projects from {FILENAME}")
@@ -42,6 +43,8 @@ def main():
 
 
 def load_projects(filename):
+    """Load projects and return them as a list of Project objects."""
+    projects = []
     projects = []
     with open(filename,"r") as in_file:
         next(in_file)
@@ -52,6 +55,7 @@ def load_projects(filename):
     return projects
 
 def save_projects(filename,projects):
+    """Save the list of Project objects"""
     with open(filename,"w") as out_file:
         out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
         for project in projects:
@@ -60,6 +64,7 @@ def save_projects(filename,projects):
 
 
 def display_projects(projects):
+    """Display projects"""
     incomplete = []
     complete = []
     for project in projects:
@@ -78,6 +83,7 @@ def display_projects(projects):
 
 
 def filter_projects_by_date(projects, date_string):
+    """Filter and display projects that start after a given date, sorted by start date."""
     try:
         filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
         filtered = []
@@ -94,6 +100,7 @@ def filter_projects_by_date(projects, date_string):
         print("Invalid date format.")
 
 def add_new_project():
+    """Let user add new projects"""
     print("Let's add a new project")
     name = input("Name: ")
     date_str = input("Start date (dd/mm/yy): ")
@@ -103,6 +110,7 @@ def add_new_project():
     return Project(name, date_str, int(priority), float(cost), int(percent))
 
 def update_project(projects):
+    """Allow the user to select a project and update"""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
     index = int(input("Project choice: "))
