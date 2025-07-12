@@ -26,7 +26,7 @@ def main():
             filename = input("Filename: ")
             pass
         elif choice == "d":
-            pass
+            display_projects(projects)
         elif choice == "f":
             date_str = input("Show projects that start after date (dd/mm/yyyy): ")
             pass
@@ -51,6 +51,21 @@ def load_projects(filename):
             projects.append(project)
     return projects
 
-
+def display_projects(projects):
+    incomplete = []
+    complete = []
+    for project in projects:
+        if project.is_complete():
+            complete.append(project)
+        else:
+            incomplete.append(project)
+    complete.sort()
+    incomplete.sort()
+    print("Incomplete projects:")
+    for project in incomplete:
+        print(f"{project}")
+    print("Completed projects:")
+    for project in complete:
+        print(f"{project}")
 
 main()
