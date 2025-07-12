@@ -1,6 +1,5 @@
 # CP1404 Practicals
 Practical work for IT@JCU CP1404
-# CP1404 Practicals Repository
 
 ## About This Repository
 
