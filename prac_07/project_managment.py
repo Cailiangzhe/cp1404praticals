@@ -28,8 +28,8 @@ def main():
         elif choice == "d":
             display_projects(projects)
         elif choice == "f":
-            date_str = input("Show projects that start after date (dd/mm/yyyy): ")
-            pass
+            date_string = input("Show projects that start after date (dd/mm/yyyy): ")
+            filter_projects_by_date(projects, date_string)
         elif choice == "a":
             pass
         elif choice == "u":
@@ -75,5 +75,23 @@ def display_projects(projects):
     print("Completed projects:")
     for project in complete:
         print(f"{project}")
+
+
+def filter_projects_by_date(projects, date_string):
+    try:
+        filter_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+        filtered = []
+        for project in projects:
+            if project.start_date > filter_date:
+                filtered.append(project)
+        for i in range(len(filtered) - 1):
+            for j in range(i + 1, len(filtered)):
+                if filtered[i].start_date > filtered[j].start_date:
+                    filtered[i], filtered[j] = filtered[j], filtered[i]
+        for project in filtered:
+            print(project)
+    except ValueError:
+        print("Invalid date format.")
+
 
 main()
