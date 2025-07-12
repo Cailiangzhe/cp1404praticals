@@ -33,11 +33,11 @@ def main():
         elif choice == "a":
             projects.append(add_new_project())
         elif choice == "u":
-            pass
+            update_project(projects)
         elif choice == "q":
             confirm = input(f"Would you like to save to {FILENAME}? ").lower()
             if confirm =="y" or confirm =="yes":
-                pass
+                save_projects(FILENAME, projects)
     print("Thank you for using custom-built project management software.")
 
 
@@ -101,6 +101,19 @@ def add_new_project():
     cost = input("Cost estimate: $")
     percent = input("Percent complete: ")
     return Project(name, date_str, int(priority), float(cost), int(percent))
+
+def update_project(projects):
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+    index = int(input("Project choice: "))
+    project = projects[index]
+    print(project)
+    percent = input("New Percentage: ")
+    priority = input("New Priority: ")
+    if percent:
+        project.completion_percentage = int(percent)
+    if priority:
+        project.priority = int(priority)
 
 
 if __name__ == '__main__':
