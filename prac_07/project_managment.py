@@ -42,4 +42,15 @@ def main():
 
 
 def load_projects(filename):
-    pass
+    projects = []
+    with open(filename,"r") as in_file:
+        next(in_file)
+        for line in in_file:
+            parts = line.strip().split('\t')
+            project = Project(parts[0], parts[1], parts[2], parts[3], parts[4])
+            projects.append(project)
+    return projects
+
+
+
+main()
