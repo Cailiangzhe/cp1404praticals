@@ -6,3 +6,10 @@ class Band:
         self.name = name
         self.musicians = []
 
+    def add(self, musician):
+        """Add a Musician to the band."""
+        self.musicians.append(musician)
+
+    def __str__(self):
+        """Return string representation of the Band and its musicians."""
+        return f"{self.name} ({', '.join(str(musician) for musician in self.musicians)})"
